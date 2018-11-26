@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=750,user-scalable=no" />
+    <title>历史的回眸 定制改开放40年纪念明信片</title>
+    <script>
+        document.getElementsByTagName('html')[0].style.fontSize = 750 / 10 + 'px';
+        window.protocol = location.protocol;
+        window.h5name = 'witness';
+        window.customid = '1697340893'; //改革开放40周年.
+
+        window.baseUrl = window.protocol + '//api.zmiti.com/v2';
+        window.wxappid = 'wx5ec3d35069383211';
+        window.wxappsecret = '149cdef95c99ff7cab523d8beca86080';
+
+
+        window.desc = document.title;
+        document.addEventListener('touchmove', function (e) {
+            e.preventDefault()
+        }, {
+            passive: false
+        });
+    </script>
+</head>
+
+<body>
+    <div id='app'></div>
+    <script src="//res.wx.qq.com/open/js/jweixin-1.3.0.js"></script>
+    <script>
+        window.wxappid = 'wx5ec3d35069383211';
+        function wxHandlercallback(res, title, desc) {
+            arguments.callee.res = arguments.callee.res || res;
+            wx.config({
+                debug: true,
+                appId: arguments.callee.res.appId,
+                timestamp: arguments.callee.res.timestamp,
+                nonceStr: arguments.callee.res.nonceStr,
+                signature: arguments.callee.res.signature,
+                jsApiList: ["onMenuShareTimeline", "onMenuShareAppMessage", "onMenuShareQQ", "onMenuShareQZone",
+                    "onMenuShareWeibo"
+                ]
+            });
+            wx.ready(function () {
+                var config = {
+                    title: title || document.title,
+                    desc: desc || window.desc,
+                    //link: encodeURIComponent(window.location.href.split('?')[0].split('#')[0]),
+                    link: 'https://h5.zhongguowangshi.com/h5/witness/index.html',
+                    imgUrl: "http://h5.zhongguowangshi.com/h5/" + window.h5name + "/assets/images/302.jpg"
+                };
+                wx.onMenuShareAppMessage(config);
+                wx.onMenuShareTimeline(config);
+            });
+        }
+
+
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return (r[2]);
+            return null;
+        }
+
+        var url = location.href;
+        var paraString = '';
+        if (url.indexOf("?") > 0 ) {
+          paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+        }
+  
+        if (paraString.length > 0 ) {
+            var nickname = getQueryString('nickname');
+            var headimgurl = getQueryString('headimgurl');
+            window.nickname = nickname;
+            window.headimgurl = headimgurl;
+        }else{
+      
+            var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + wxappid +
+            '&redirect_uri=https://openapi.zhongguowangshi.com/wxHandler.ashx?action=getWeixinUserInfo&response_type=code&scope=snsapi_userinfo&state=XHSAh5A'
+            + window.h5name + 'AindexAhtml#wechat_redirect'
+            window.location.href = url;
+        }
+
+        setTimeout(()=>{
+            wxHandlercallback('', decodeURI(window.nickname) + ' 刚刚定制到一款限量版明信片，你要吗？', document.title);
+        },1000)
+    </script>
+    <script src="//openapi.zhongguowangshi.com/wxHandler.ashx?callback=wxHandlercallback&action=getWeixinConfig&debug=1&site=xhsh5"></script>
+    <script>
+       
+    </script>
+
+    
+</body>
+
+</html>

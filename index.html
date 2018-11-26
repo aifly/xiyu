@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+<meta name="viewport" content="width=750,user-scalable=no" />
+	<title>我们都是弄潮儿</title>
+<script>
+	document.getElementsByTagName('html')[0].style.fontSize = 750 / 10 + 'px';
+	window.protocol = location.protocol;
+	window.h5name = 'witness';
+	window.customid = '1697340893'; //改革开放40周年.
+
+	window.baseUrl = window.protocol + '//api.zmiti.com/v2';
+	window.wxappid = 'wx5ec3d35069383211';
+	window.wxappsecret = '149cdef95c99ff7cab523d8beca86080';
+
+	
+	window.desc = '定制你的改革开放40周年明信片！';
+	document.addEventListener('touchmove', function (e) {
+		e.preventDefault()
+	}, {
+		passive: false
+	});
+</script>
+</head>
+
+<body>
+	<div id='app'></div>
+	<script src="//res.wx.qq.com/open/js/jweixin-1.3.0.js"></script>
+
+	<script>
+		
+		function wxHandlercallback(res,title,desc) {
+			arguments.callee.res = arguments.callee.res || res;
+
+			wx.config({
+				debug: false,
+				appId: arguments.callee.res.appId,
+				timestamp: arguments.callee.res.timestamp,
+				nonceStr: arguments.callee.res.nonceStr,
+				signature: arguments.callee.res.signature,
+				jsApiList: ["onMenuShareTimeline", "onMenuShareAppMessage", "onMenuShareQQ", "onMenuShareQZone",
+					"onMenuShareWeibo"
+				]
+			});
+
+			//window.location.href = encodeURI(window.location.href)
+
+			wx.ready(function () {
+				var config = {
+					title: '今天，我们都是弄潮儿'||document.title,
+					desc: desc|| window.desc,
+					//link: encodeURIComponent(window.location.href.split('?')[0].split('#')[0]),
+					link: 'https://h5.zhongguowangshi.com/h5/witness/index.html',
+					imgUrl: "http://h5.zhongguowangshi.com/h5/"+window.h5name+"/assets/images/303.jpg",
+					error:function(){
+					},
+					success(){
+					}
+				};
+				wx.onMenuShareAppMessage(config);
+				wx.onMenuShareTimeline(config);
+			});
+		}
+	</script>
+	<script src="//openapi.zhongguowangshi.com/wxHandler.ashx?callback=wxHandlercallback&action=getWeixinConfig&debug=1&site=xhsh5"></script>
+	<script>
+		function loadScript(src) {
+			var script = document.createElement('script');
+			script.src = src + "?t=" + new Date().getTime();
+			document.body.appendChild(script)
+		}
+
+		/*
+		loadScript('./assets/js/base.js');
+		loadScript('./assets/js/index.js');
+		*/
+	</script>
+
+	<!-- 
+	 -->
+		<script src='./assets/js/base.js'></script>
+		<script src='http://localhost:4053/index.js' onerror="loadScript('./assets/js/index.js')"></script>
+</body>
+
+</html>
