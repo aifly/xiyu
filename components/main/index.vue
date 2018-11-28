@@ -1,28 +1,66 @@
 <template>
 	<transition name='main'>
 		<div class='zmiti-main-ui lt-full' :class="{'show':show}" >
-			<div>正在进入，请稍后...</div>
-			<iframe :style="{opacity:loaded?1:0}" @load='load' :src="sceneList[index].href" frameborder="0"></iframe>
+			<div v-if='showDetail' class='zmiti-main-detail'>
+				<div class='lt-full' :style="{background:'url('+sceneList[index].imgsList[0].img+') no-repeat center center',backgroundSize:'cover'}"></div>
+				<div v-if='createImg' class='zmiti-createimg'>
+					<div class='zmiti-createimg-img'>
+						<img :src="createImg" alt="">
+						<div>长按保存至手机</div>
+					</div>
+					<div class='zmiti-btns'>
+						<div v-tap='[reChangeScene]'>看看其它场景</div>
+						<div v-tap='[share]'>分享</div>
+					</div>
 
-			<div class='zmiti-scene-list' :class='{"show":showScene}'>
-				<ul>
-					<li v-for='(scene,i) in sceneList' :key="i">
-						<div v-tap='[changeScene,scene,i]'>
-							<img @touchstart='imgStart' :src='scene.thumbnail' alt="">
+					<div class='zmiti-mask' @touchstart='showMask=false' v-if='showMask'>
+						<img :src="imgs.arrow" alt="">
+					</div>
+				</div>
+				<div v-else>
+					<div class='zmiti-main-detail-content'>
+						<div class='zmiti-detail-img'>
+							<img :src="sceneList[index].imgsList[0].img" alt="">
 						</div>
-						<div>
-							{{scene.name}}
+						<div class='zmiti-detail-content'>
+							<div v-for='(img,k) in sceneList[index].imgsList' :key="k">
+								{{img.content}}
+							</div>
 						</div>
-					</li>
-				</ul>
-				<div class='zmiti-change-scene' v-tap='[change]'>
-					切换场景
+						<div class='zmiti-detail-close' v-tap='[toggleDetail,false]'>
+
+						</div>
+					</div>
+
+					<div class='zmiti-btn zmiti-create-card' v-tap='[createCard]'>
+						生成名信片
+					</div>
 				</div>
 			</div>
+			<div v-show='!showDetail'>
+				<div>正在进入，请稍后...</div>
+				<iframe :style="{opacity:loaded?1:0}" @load='load' :src="sceneList[index].href" frameborder="0"></iframe>
 
-			<div class='zmiti-btn zmiti-continue' v-if='showScene'>
-				继续
+				<div class='zmiti-scene-list' :class='{"show":showScene}'>
+					<ul>
+						<li :class="{'active':i === index}" v-for='(scene,i) in sceneList' :key="i">
+							<div v-tap='[changeScene,scene,i]'>
+								<img @touchstart='imgStart' :src='scene.thumbnail' alt="">
+							</div>
+							<div>
+								{{scene.name}}
+							</div>
+						</li>
+					</ul>
+					<div class='zmiti-change-scene' v-tap='[change]'>
+						切换场景
+					</div>
+				</div>
+				<div class='zmiti-btn zmiti-continue'  v-tap='[toggleDetail,true]'>
+					继续
+				</div>
 			</div>
+			
 		</div>
 	</transition>
 </template>
@@ -53,10 +91,12 @@
 				errMsg:'',
 				imgs,
 				loaded:false,
+				createImg:'',
 				showTeam: false,
-				showQrcode: false,
+				showMask: false,
 				show: true,
 				showScene:true,
+				showDetail:false,
 				sceneList:window.config.sceneList,
 				viewW:Math.min( window.innerWidth,750),
 				viewH: window.innerHeight,
@@ -66,6 +106,12 @@
 	
 		components: {Toast},
 		methods: {
+			share(){
+				this.showMask = true;
+			},
+			toggleDetail(flag){
+				this.showDetail = flag;
+			},
 			imgStart(e){
 				e.preventDefault();
 			},
@@ -85,6 +131,13 @@
 				this.loaded = false;
 				document.title = scene.name;
 
+			},
+			reChangeScene(){
+				this.createImg = '';
+				this.showDetail = false;
+			},
+			createCard(){
+				this.createImg = this.sceneList[this.index].createImg;
 			}
 			
 		},
