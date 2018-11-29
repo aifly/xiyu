@@ -1,27 +1,27 @@
 <template>
-	<div ref='page'  class="lt-full zmiti-index-main-ui " :style="{background:'url('+imgs.bg+') no-repeat 50% center',backgroundSize:'cover'}"   :class="{'show':show}" >
+	<transition name='index'>
+		<div ref='page' v-if='show' class="lt-full zmiti-index-main-ui " :style="{background:'url('+imgs.bg+') no-repeat 50% center',backgroundSize:'cover'}"  >
 
-		 <div class='zmiti-card' :class="{'active':start}" @transitionend='end'>
-			 <img :src="imgs.card" alt="">
-		 </div>
-		 <div class='zmiti-index1' :class="{'active':showIndex}">
-			 <img :src="imgs.index1" alt="">
-			 <div></div>
-			 <div></div>
-		 </div>
-
-
-		 <div class='zmiti-btn zmiti-index-entry ' :class="{'active':showIndex}">
-			 去看看
-		 </div>
+			<div class='zmiti-card' :class="{'active':start}" @transitionend='end'>
+				<img :src="imgs.card" alt="">
+			</div>
+			<div class='zmiti-index1' :class="{'active':showIndex}">
+				<img :src="imgs.index1" alt="">
+				<div></div>
+				<div></div>
+			</div>
 
 
-		<div class='zmiti-logo'>
-			<img :src="imgs.logo" alt="">
+			<div class='zmiti-btn zmiti-index-entry ' :class="{'active':showIndex}" v-tap='[entry]'>
+				去看看
+			</div>
+
+
+			<div class='zmiti-logo'>
+				<img :src="imgs.logo" alt="">
+			</div>
 		</div>
-		 
-		
-	</div>
+	</transition>
 </template>
 
 <script>
@@ -45,26 +45,14 @@
 		},
 		
 		methods:{
-			 
-
 			imgStart(e){
 				e.preventDefault(); 
 			},
 			entry(){
 				this.show =false;
-				var {obserable} = this;
-				this.show = false;
-				obserable.trigger({
-					type:'toggleMain',
-					data:{
-						show:true
-					}
-				})
 			},
 			end(){
-
 				this.showIndex = true;
-				
 			},
 		},
 		mounted(){

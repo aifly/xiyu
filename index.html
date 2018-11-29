@@ -8,7 +8,7 @@
 <script>
 	document.getElementsByTagName('html')[0].style.fontSize = 750 / 10 + 'px';
 	window.protocol = location.protocol;
-	window.h5name = 'witness';
+	window.h5name = 'xiyu';
 	window.customid = '1697340893'; //改革开放40周年.
 
 	window.baseUrl = window.protocol + '//api.zmiti.com/v2';
@@ -16,7 +16,7 @@
 	window.wxappsecret = '149cdef95c99ff7cab523d8beca86080';
 
 	
-	window.desc = '定制你的改革开放40周年明信片！';
+	window.desc = '关于改革开放，习主席曾这样说';
 	document.addEventListener('touchmove', function (e) {
 		e.preventDefault()
 	}, {
@@ -49,10 +49,10 @@
 
 			wx.ready(function () {
 				var config = {
-					title: '今天，我们都是弄潮儿'||document.title,
+					title: document.title,
 					desc: desc|| window.desc,
 					//link: encodeURIComponent(window.location.href.split('?')[0].split('#')[0]),
-					link: 'https://h5.zhongguowangshi.com/h5/witness/index.html',
+					link: 'https://h5.zhongguowangshi.com/h5/'+window.h5name+'/index.html',
 					imgUrl: "http://h5.zhongguowangshi.com/h5/"+window.h5name+"/assets/images/303.jpg",
 					error:function(){
 					},

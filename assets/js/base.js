@@ -1,5 +1,7 @@
 ﻿var imgs = {
 	logo: './assets/images/logo.png',
+	point: './assets/images/point.png',
+	waiting: './assets/images/waiting.png',
 	logo1: './assets/images/logo1.png',
 	arrow: './assets/images/arrow.png',
 	play: './assets/images/play.png',
@@ -15,11 +17,16 @@
 	yuehan:'./assets/images/yuehan.jpg',
 	lianheguo:'./assets/images/lianheguo.jpg',
 	dawosi:'./assets/images/dawosi.jpg',
+	aodaliya: './assets/images/aodaliya.jpg',
+	lima: './assets/images/lima.jpg',
 	
 	cDawosi:'./assets/images/c-dawosi.jpg',
 	cAodaliya:'./assets/images/c-aodaliya.jpg',
+	cDawosi2:'./assets/images/dawosi2.jpg',
 	cLianheguo:'./assets/images/c-lianheguo.jpg',
 	cYuehan:'./assets/images/c-yuehan.jpg',
+	cLima:'./assets/images/c-lima.jpg',
+
 
 
 
@@ -76,7 +83,7 @@ window.config = {
 			createImg:imgs.cAodaliya,
 			imgsList:[
 				{
-					img: imgs.lianheguo,
+					img: imgs.aodaliya,
 					content: '2014年11月15日，布里斯班，出席二十国集团领导人第九次峰会并发表重要讲话'
 				}
 			],
@@ -86,26 +93,31 @@ window.config = {
 			id: '4',
 			thumbnail: imgs.thum4,
 			createImg:imgs.cDawosi,
+			createImg1:imgs.cDawosi2,
 			imgsList:[
 				{
 					img:imgs.dawosi,
 					content: '2017年1月17日，达沃斯，出席世界经济论坛2017年年会开幕式并发表主旨演讲'
 				}
 			],
+			imgsList1: [{
+				img: imgs.dawosi,
+				content: '2017年1月17日，达沃斯，出席世界经济论坛2017年年会开幕式并发表主旨演讲'
+			}],
 			name: '达沃斯',
-			href: "http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181127121213/5bfcc40a5098914c484f021a/index.html"
+			href: "http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181127121213/5bfcc40a5098914c484f021a/index.html",
+			href1:"http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181128053817/5bfe61835098914c4f74cfee/index.html"
 		}, {
 			id: '5',
 			thumbnail: imgs.thum5,
-			createImg: imgs.cDawosi,
+			createImg: imgs.cLima,
 			imgsList:[
 				{
-					img:imgs.lianheguo,
-					content:"2017年1月17日，达沃斯，出席世界经济论坛2017年年会开幕式并发表主旨演讲"
+					img:imgs.lima,
+					content: "2016年11月20日，利马，出席亚太经合组织第二十四次领导人非正式会议并发表重要讲话"
 				}
-
 			],
-			name: '达沃斯',
+			name: '秘鲁利马',
 			href: "http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181128053817/5bfe61835098914c4f74cfee/index.html"
 		}
 	]
@@ -113,7 +125,7 @@ window.config = {
  
 var musics = {
 	music: {
-		src: './assets/music/bg4.mp3',
+		src: './assets/music/bg2.mp3',
 		autoplay: false,
 		name: 'bg',
 		loop: true

@@ -15,7 +15,7 @@ $color: #fffb88;
     background: #fff;
 
     &.show {
-        z-index: 1000;
+        z-index: 70;
         opacity: 1;
     }
 
@@ -134,7 +134,7 @@ $color: #fffb88;
                     }
                 }
 
-                margin-right: 24px;
+                margin-right: 19px;
 
                 &:nth-of-type(1) {
                     margin-left: 70px;
@@ -178,6 +178,15 @@ $color: #fffb88;
     }
 
     .zmiti-main-detail {
+        &.detail-enter-active,
+        &.detail-leave-active {
+            @include transition(1s);
+        }
+
+        &.detail-enter,
+        &.detail-leave-to {
+            opacity: .3;
+        }
         .lt-full {
             -webkit-filter: blur(20px);
 
@@ -211,6 +220,16 @@ $color: #fffb88;
                 max-height: 60vh;
                 margin: 3vh auto 3vh;
                 text-align: center;
+
+                &.active{
+                    width: 100%;
+                    height: auto;
+                    max-width: none;
+                    img{
+                        width: 100%;
+                        height: auto;
+                    }
+                }
                 img {
                     height: 100%;
                     width: auto;
@@ -251,6 +270,38 @@ $color: #fffb88;
             bottom: 3vh;
         }
 
+        .zmiti-createimg,
+        .zmiti-main-detail-C {
+            &.create-enter-active,
+            &.create-leave-active {
+                @include transition(.5s);
+            }
+
+            &.create-enter,
+            &.create-leave-to {
+                opacity: 0;
+            }
+        }
+        .zmiti-creating{
+            @include displayBox(vertical);
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            color:#fff;;
+            @include pos(a);
+            .zmiti-point{
+                @include pos(a);
+                margin-top: -56px;;
+                left: 50%;
+                margin-left: -14px;
+                top: 50%;
+                @include animation(waiting 1s linear infinite);
+                img{
+
+                }
+            }
+        }
         .zmiti-createimg{
             @include pos(a);
             width: 100%;
@@ -301,5 +352,11 @@ $color: #fffb88;
 
     to {
         -webkit-transform: translate3d(0, 0, 0);
+    }
+}
+
+@-webkit-keyframes waiting {
+    to {
+        -webkit-transform: rotate(360deg);
     }
 }

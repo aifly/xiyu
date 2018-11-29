@@ -1,45 +1,59 @@
 <template>
 	<transition name='main'>
 		<div class='zmiti-main-ui lt-full' :class="{'show':show}" >
-			<div v-if='showDetail' class='zmiti-main-detail'>
-				<div class='lt-full' :style="{background:'url('+sceneList[index].imgsList[0].img+') no-repeat center center',backgroundSize:'cover'}"></div>
-				<div v-if='createImg' class='zmiti-createimg'>
-					<div class='zmiti-createimg-img'>
-						<img :src="createImg" alt="">
-						<div>长按保存至手机</div>
-					</div>
-					<div class='zmiti-btns'>
-						<div v-tap='[reChangeScene]'>看看其它场景</div>
-						<div v-tap='[share]'>分享</div>
-					</div>
+			<transition name='detail'>
+				<div v-if='showDetail' class='zmiti-main-detail'>
+					<div class='lt-full' :style="{background:'url('+sceneList[index].imgsList[0].img+') no-repeat center center',backgroundSize:'cover'}"></div>
+					<transition name='create'>
+						<div v-if='createImg && !creating' class='zmiti-createimg'>
+							<div class='zmiti-createimg-img'>
+								<img :src="createImg" alt="">
+								<div>长按保存至手机</div>
+							</div>
+							<div class='zmiti-btns'>
+								<div v-tap='[reChangeScene]'>看看其它场景</div>
+								<div v-tap='[share]'>分享</div>
+							</div>
 
-					<div class='zmiti-mask' @touchstart='showMask=false' v-if='showMask'>
-						<img :src="imgs.arrow" alt="">
-					</div>
-				</div>
-				<div v-else>
-					<div class='zmiti-main-detail-content'>
-						<div class='zmiti-detail-img'>
-							<img :src="sceneList[index].imgsList[0].img" alt="">
-						</div>
-						<div class='zmiti-detail-content'>
-							<div v-for='(img,k) in sceneList[index].imgsList' :key="k">
-								{{img.content}}
+							<div class='zmiti-mask' @touchstart='showMask=false' v-if='showMask'>
+								<img :src="imgs.arrow" alt="">
 							</div>
 						</div>
-						<div class='zmiti-detail-close' v-tap='[toggleDetail,false]'>
-
+					</transition>
+					<div class='zmiti-creating' v-if='creating'>
+						<div>
+							<img :src="imgs.waiting" alt="">
+						</div>
+						<div class='zmiti-point'>
+							<img :src="imgs.point" alt="">
 						</div>
 					</div>
+					<transition name='create'>
+						<div v-if='!createImg && !creating' class='zmiti-main-detail-C'>
+							<div class='zmiti-main-detail-content'>
+								<div class='zmiti-detail-img' :class="{'active':isWidth}">
+									<img @load='imgLoad' :src="sceneList[index]['imgsList'+sceneIndex][0].img" alt="">
+								</div>
+								<div class='zmiti-detail-content'>
+									<div v-for='(img,k) in sceneList[index].imgsList' :key="k">
+										{{img.content}}
+									</div>
+								</div>
+								<div class='zmiti-detail-close' v-tap='[toggleDetail,false]'>
 
-					<div class='zmiti-btn zmiti-create-card' v-tap='[createCard]'>
-						生成名信片
-					</div>
+								</div>
+							</div>
+
+							<div class='zmiti-btn zmiti-create-card' v-tap='[createCard]'>
+								生成名信片
+							</div>
+						</div>
+					</transition>
 				</div>
-			</div>
+			</transition>
 			<div v-show='!showDetail'>
 				<div>正在进入，请稍后...</div>
-				<iframe :style="{opacity:loaded?1:0}" @load='load' :src="sceneList[index].href" frameborder="0"></iframe>
+				<iframe :style="{opacity:loaded?1:0}" @load='load' :src="sceneList[index]['href'+sceneIndex]" frameborder="0"></iframe>
 
 				<div class='zmiti-scene-list' :class='{"show":showScene}'>
 					<ul>
@@ -56,7 +70,7 @@
 						切换场景
 					</div>
 				</div>
-				<div class='zmiti-btn zmiti-continue'  v-tap='[toggleDetail,true]'>
+				<div class='zmiti-btn zmiti-continue'  v-tap='[toggleDetail,true]' v-if='loaded'>
 					继续
 				</div>
 			</div>
@@ -90,10 +104,13 @@
 			return {
 				errMsg:'',
 				imgs,
+				isWidth:false,
 				loaded:false,
 				createImg:'',
+				creating:false,
 				showTeam: false,
 				showMask: false,
+				sceneIndex:'',
 				show: true,
 				showScene:true,
 				showDetail:false,
@@ -106,6 +123,10 @@
 	
 		components: {Toast},
 		methods: {
+			imgLoad(e){
+				this.isWidth = e.target.width>e.target.height;
+				
+			},
 			share(){
 				this.showMask = true;
 			},
@@ -130,6 +151,8 @@
 				this.index = index;
 				this.loaded = false;
 				document.title = scene.name;
+				this.sceneIndex = index === 3 && Math.random()-.5>0 ? "1":'';
+				
 
 			},
 			reChangeScene(){
@@ -137,7 +160,11 @@
 				this.showDetail = false;
 			},
 			createCard(){
-				this.createImg = this.sceneList[this.index].createImg;
+				this.creating = true;
+				setTimeout(() => {
+					this.createImg = this.sceneList[this.index]['createImg'+this.sceneIndex];
+					this.creating = false;
+				}, 3000);
 			}
 			
 		},

@@ -57,12 +57,23 @@ new Vue({
 		<audio src='./assets/music/tu.mp3' ref='tu' loop></audio>
 		<Main :pv='pv' :nickname='nickname' :headimgurl='headimgurl'  v-if='show && !isShare'  :obserable='obserable'></Main>
 		<Upload :pv='pv' :nickname='nickname' :headimgurl='headimgurl'   v-if='show && !isShare'  :obserable='obserable'></Upload>
-		<Music :obserable='obserable'></Music>
 		<Loading v-if='!show' :width='width' :obserable='obserable'></Loading>
 		*/
 		template: `<div>
+		<Music :obserable='obserable'></Music>
 		<Index :pv='pv' :nickname='nickname' :headimgurl='headimgurl'   v-if='show && !isShare'  :obserable='obserable'></Index>
 		<Main :pv='pv' :nickname='nickname' :headimgurl='headimgurl'   v-if='show && !isShare'  :obserable='obserable'></Main>
+		<div  v-if='!loaded' :style='{background:"#158ae4"}' class='zmiti-loading lt-full'>
+			<div class='zmiti-loading-ui'>
+				 <a href="#">
+			  		<section class='zmiti-head' :style="{background:'url(./assets/images/logo.png) no-repeat center / cover'}"></section>
+			        <div class="line1"></div>
+			        <div class="line2"></div>
+			        <div class="line3"></div>
+					<div class='zmiti-progress'>{{width}}%</div>
+			    </a>
+			</div>
+		</div>
 	</div>`,
 	methods: {
 
@@ -124,7 +135,7 @@ new Vue({
 		}
 
 		s.loading(arr, (scale) => {
-			s.width = scale *390;
+			s.width = scale *100|0;
 		}, () => {
 			
 			s.show = true;

@@ -19,7 +19,7 @@
   height: .8rem;
   border-radius: 50%;
   position: fixed;
-  z-index: 1000;
+  z-index: 1223000 !important;
   right: .5rem;
   top: .5rem;
 }
@@ -40,8 +40,16 @@
   overflow: hidden;
   width: 750px !important;
   left: 0;
+  z-index: 80;
+}
+
+.zmiti-index-main-ui.index-enter-active, .zmiti-index-main-ui.index-leave-active {
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.zmiti-index-main-ui.index-enter, .zmiti-index-main-ui.index-leave-to {
   opacity: 0;
-  z-index: -1;
 }
 
 .zmiti-index-main-ui::before {
@@ -58,7 +66,6 @@
 
 .zmiti-index-main-ui.show {
   opacity: 1;
-  z-index: 200;
 }
 
 .zmiti-index-main-ui .zmiti-card {
