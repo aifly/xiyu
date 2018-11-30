@@ -1,4 +1,4 @@
-﻿var imgs = {
+﻿﻿var imgs = {
 	logo: './assets/images/logo.png',
 	point: './assets/images/point.png',
 	waiting: './assets/images/waiting.png',
@@ -125,9 +125,9 @@ window.config = {
  
 var musics = {
 	music: {
-		src: './assets/music/bg2.mp3',
+		src: './assets/music/bg5.mp3',
 		autoplay: false,
-		name: 'bg',
+		name: 'bg2',
 		loop: true
 	}
 };
