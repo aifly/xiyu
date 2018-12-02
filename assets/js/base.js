@@ -53,17 +53,17 @@ window.config = {
 	secretKey: "e9469538b0623783f38c585821459454",
 	sceneList:[
 		{
-			id:'1',
-			thumbnail:imgs.thum1,
-			createImg:imgs.cYuehan,
+			id:'3',
+			thumbnail:imgs.thum3,
+			createImg:imgs.cAodaliya,
 			imgsList:[
 				{
-					img:imgs.yuehan,
-					content: '2018年7月25日，习近平，约翰内斯堡，出席金砖国家工商论坛并发表重要讲话'
+					img: imgs.aodaliya,
+					content: '2014年11月15日，布里斯班，出席二十国集团领导人第九次峰会并发表重要讲话'
 				}
 			],
-			name: '约翰内斯堡',
-			href: 'http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181127112803/5bfcb9805098914c593cb8f2/index.html'
+			name: '澳大利亚',
+			href: "http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181127120949/5bfcc37e5098914c4b7b44ea/index.html"
 		},
 		{
 			id:'2',
@@ -77,19 +77,33 @@ window.config = {
 			],
 			name: "联合国",
 			href: "http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181127120650/5bfcc2d35098914c492ccf66/index.html"
-		},{
-			id:'3',
-			thumbnail:imgs.thum3,
-			createImg:imgs.cAodaliya,
+		}, {
+			id: '5',
+			thumbnail: imgs.thum5,
+			createImg: imgs.cLima,
 			imgsList:[
 				{
-					img: imgs.aodaliya,
-					content: '2014年11月15日，布里斯班，出席二十国集团领导人第九次峰会并发表重要讲话'
+					img:imgs.lima,
+					content: "2016年11月20日，利马，出席亚太经合组织第二十四次领导人非正式会议并发表重要讲话"
 				}
 			],
-			name: '澳大利亚',
-			href: "http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181127120949/5bfcc37e5098914c4b7b44ea/index.html"
-		}, {
+			name: '秘鲁利马',
+			href: "http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181128053817/5bfe61835098914c4f74cfee/index.html"
+		},
+		{
+			id:'1',
+			thumbnail:imgs.thum1,
+			createImg:imgs.cYuehan,
+			imgsList:[
+				{
+					img:imgs.yuehan,
+					content: '2018年7月25日，习近平，约翰内斯堡，出席金砖国家工商论坛并发表重要讲话'
+				}
+			],
+			name: '约翰内斯堡',
+			href: 'http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181127112803/5bfcb9805098914c593cb8f2/index.html'
+		},
+		 {
 			id: '4',
 			thumbnail: imgs.thum4,
 			createImg:imgs.cDawosi,
@@ -107,18 +121,6 @@ window.config = {
 			name: '达沃斯',
 			href: "http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181127121213/5bfcc40a5098914c484f021a/index.html",
 			href1:"http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181128053817/5bfe61835098914c4f74cfee/index.html"
-		}, {
-			id: '5',
-			thumbnail: imgs.thum5,
-			createImg: imgs.cLima,
-			imgsList:[
-				{
-					img:imgs.lima,
-					content: "2016年11月20日，利马，出席亚太经合组织第二十四次领导人非正式会议并发表重要讲话"
-				}
-			],
-			name: '秘鲁利马',
-			href: "http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181128053817/5bfe61835098914c4f74cfee/index.html"
 		}
 	]
 }

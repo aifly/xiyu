@@ -50,6 +50,12 @@
 			},
 			entry(){
 				this.show =false;
+				this.obserable.trigger({
+					type:'toggleMain',
+					data:{
+						show:true
+					}
+				})
 			},
 			end(){
 				this.showIndex = true;

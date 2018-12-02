@@ -51,7 +51,7 @@
 					</transition>
 				</div>
 			</transition>
-			<div v-show='!showDetail'>
+			<div v-show='!showDetail && show'>
 				<div>正在进入，请稍后...</div>
 				<iframe :style="{opacity:loaded?1:0}" @load='load' :src="sceneList[index]['href'+sceneIndex]" frameborder="0"></iframe>
 
@@ -70,7 +70,7 @@
 						切换场景
 					</div>
 				</div>
-				<div class='zmiti-btn zmiti-continue'  v-tap='[toggleDetail,true]' v-if='loaded'>
+				<div class='zmiti-btn zmiti-continue'  v-tap='[toggleDetail,true]' v-if='showContinus'>
 					继续
 				</div>
 			</div>
@@ -107,11 +107,12 @@
 				isWidth:false,
 				loaded:false,
 				createImg:'',
+				showContinus:false,
 				creating:false,
 				showTeam: false,
 				showMask: false,
 				sceneIndex:'',
-				show: true,
+				show: false,	
 				showScene:true,
 				showDetail:false,
 				sceneList:window.config.sceneList,
@@ -125,7 +126,6 @@
 		methods: {
 			imgLoad(e){
 				this.isWidth = e.target.width>e.target.height;
-				
 			},
 			share(){
 				this.showMask = true;
@@ -138,9 +138,7 @@
 			},
 			load(){
 				this.loaded = true;
-				setTimeout(() => {
-					this.showScene = false;
-				}, 3000);
+				
 			},
 			change(){
 				if(this.loaded){
@@ -151,7 +149,7 @@
 				this.index = index;
 				this.loaded = false;
 				document.title = scene.name;
-				this.sceneIndex = index === 3 && Math.random()-.5>0 ? "1":'';
+				this.sceneIndex = index === 4 && Math.random()-.5>0 ? "1":'';
 				
 
 			},
@@ -173,7 +171,12 @@
 			var {obserable } = this;
 			obserable.on('toggleMain',(data)=>{
 				this.show = data.show;
-				
+				setTimeout(() => {
+					this.showScene = false;
+					setTimeout(()=>{
+						this.showContinus = true;
+					},2000)
+				}, 3000);
 			});
 
 			
