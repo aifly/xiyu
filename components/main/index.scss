@@ -35,12 +35,13 @@ $color: #fffb88;
         top: 0;
         overflow: hidden;
         -webkit-overflow-scrolling: touch;
+        z-index: 980;
     }
 
     .zmiti-scene-list {
         @include pos(a);
 
-        z-index: 10;
+        z-index: 981;
         width: $viewW;
         left: -50px;
 
@@ -172,7 +173,7 @@ $color: #fffb88;
     }
 
     .zmiti-continue {
-        z-index: 100;
+        z-index: 981;
         bottom: 80px;
         opacity: 1;
     }
@@ -220,6 +221,7 @@ $color: #fffb88;
                 max-height: 60vh;
                 margin: 3vh auto 3vh;
                 text-align: center;
+                font-size:28px;
 
                 &.active{
                     width: 100%;
@@ -238,8 +240,8 @@ $color: #fffb88;
 
             .zmiti-detail-close{
                 border:2px solid #fff;
-                width: 100px;
-                height: 100px;
+                width: 80px;
+                height: 80px;
                 @include br();
                 margin: 10px auto;
                 @include pos(r);

@@ -12,11 +12,13 @@
 			</div>
 
 
-			<div class='zmiti-btn zmiti-index-entry ' :class="{'active':showIndex}" v-tap='[entry]'>
+			<div class='zmiti-btn zmiti-index-entry ' :class="{'active':showIndex}" v-tap='[entry]' >
 				去看看
 			</div>
 
-
+		<!-- 	<div class='zmiti-code' v-tap='[entry]'>
+				<img :src="imgs.code" alt="">
+			</div> -->
 			<div class='zmiti-logo'>
 				<img :src="imgs.logo" alt="">
 			</div>
@@ -65,6 +67,7 @@
 
 			setTimeout(() => {
 				this.start = true;
+				this.showIndex = true;
 			}, 1000);
 
 		}

@@ -52,6 +52,13 @@
   opacity: 0;
 }
 
+.zmiti-index-main-ui .zmiti-code {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 100;
+}
+
 .zmiti-index-main-ui::before {
   content: '';
   position: absolute;

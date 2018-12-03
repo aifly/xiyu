@@ -45,7 +45,7 @@
 							</div>
 
 							<div class='zmiti-btn zmiti-create-card' v-tap='[createCard]'>
-								生成名信片
+								生成明信片
 							</div>
 						</div>
 					</transition>
@@ -53,7 +53,7 @@
 			</transition>
 			<div v-show='!showDetail && show'>
 				<div>正在进入，请稍后...</div>
-				<iframe :style="{opacity:loaded?1:0}" @load='load' :src="sceneList[index]['href'+sceneIndex]" frameborder="0"></iframe>
+				<iframe :style="{opacity:loaded?1:0}" @load='load' :src="sceneList[index]['href']" frameborder="0"></iframe>
 
 				<div class='zmiti-scene-list' :class='{"show":showScene}'>
 					<ul>
@@ -104,6 +104,7 @@
 			return {
 				errMsg:'',
 				imgs,
+				showFrame:false,
 				isWidth:false,
 				loaded:false,
 				createImg:'',
@@ -138,6 +139,10 @@
 			},
 			load(){
 				this.loaded = true;
+				setTimeout(()=>{
+					this.showContinus = true;
+				},2000)
+				
 				
 			},
 			change(){
@@ -149,7 +154,7 @@
 				this.index = index;
 				this.loaded = false;
 				document.title = scene.name;
-				this.sceneIndex = index === 4 && Math.random()-.5>0 ? "1":'';
+				this.sceneIndex = index === 3 && Math.random()-.5>0 ? "1":'';
 				
 
 			},
@@ -173,9 +178,7 @@
 				this.show = data.show;
 				setTimeout(() => {
 					this.showScene = false;
-					setTimeout(()=>{
-						this.showContinus = true;
-					},2000)
+					this.showFrame = true;
 				}, 3000);
 			});
 

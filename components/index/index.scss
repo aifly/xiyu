@@ -20,6 +20,13 @@ $bgColor: #4081dd;
         opacity: 0;
     }
 
+    .zmiti-code{
+        @include pos(a);
+        bottom: 10px;
+        left: 10px;
+        z-index: 100;
+    }
+
     &::before{
         content:'';
         @include pos(a);
