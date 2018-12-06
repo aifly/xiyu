@@ -53,7 +53,7 @@
 			</transition>
 			<div v-show='!showDetail && show'>
 				<div>正在进入，请稍后...</div>
-				<iframe :style="{opacity:loaded?1:0}" @load='load' :src="sceneList[index]['href']" frameborder="0"></iframe>
+				<iframe :style="{opacity:loaded?1:0}" @load='load' :src="sceneList[index]['href']+'?t='+new Date().getTime()" frameborder="0"></iframe>
 
 				<div class='zmiti-scene-list' :class='{"show":showScene}'>
 					<ul>

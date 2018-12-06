@@ -21,12 +21,12 @@
 	aodaliya: './assets/images/aodaliya.jpg',
 	lima: './assets/images/lima.jpg',
 	
-	cDawosi:'./assets/images/c-dawosi-3.jpg',
-	cAodaliya:'./assets/images/c-aodaliya-2.jpg',
-	cDawosi2:'./assets/images/c-dawosi-4.jpg',
-	cLianheguo:'./assets/images/c-lianheguo-2.jpg',
-	cYuehan:'./assets/images/c-yuehan-2.jpg',
-	cLima:'./assets/images/c-lima-2.jpg',
+	cDawosi:'./assets/images/c-dawosi-6.jpg',
+	cAodaliya:'./assets/images/c-aodaliya-3.jpg',
+	cDawosi2:'./assets/images/c-dawosi-5.jpg',
+	cLianheguo:'./assets/images/c-lianheguo-3.jpg',
+	cYuehan:'./assets/images/c-yuehan-3.jpg',
+	cLima:'./assets/images/c-lima-3.jpg',
 
 
 
