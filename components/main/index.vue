@@ -53,7 +53,7 @@
 			</transition>
 			<div v-show='!showDetail && show'>
 				<div>正在进入，请稍后...</div>
-				<iframe :style="{opacity:loaded?1:0}" @load='load' :src="sceneList[index]['href']+'?t='+new Date().getTime()" frameborder="0"></iframe>
+				<iframe :style="{opacity:loaded?1:0}" @load='load' :src="href||sceneList[index]['href']" frameborder="0"></iframe>
 
 				<div class='zmiti-scene-list' :class='{"show":showScene}'>
 					<ul>
@@ -102,6 +102,7 @@
 		data() {
 	
 			return {
+				href:'',
 				errMsg:'',
 				imgs,
 				showFrame:false,
@@ -120,6 +121,7 @@
 				viewW:Math.min( window.innerWidth,750),
 				viewH: window.innerHeight,
 				index:0,
+				lastIndex:0,
 			}
 		},
 	
@@ -155,6 +157,16 @@
 				this.loaded = false;
 				document.title = scene.name;
 				this.sceneIndex = index === 3 && Math.random()-.5>0 ? "1":'';
+				if(index === this.lastIndex){
+					this.href = this.sceneList[this.index]['href']+'?t='+new Date().getTime();
+				}
+				else{
+					this.href = '';
+				}
+
+
+				this.lastIndex = index;
+
 				
 
 			},
