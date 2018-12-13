@@ -21,7 +21,7 @@
 	aodaliya: './assets/images/aodaliya.jpg',
 	lima: './assets/images/lima.jpg',
 	
-	cDawosi:'./assets/images/c-dawosi-6.jpg',
+	cDawosi:'./assets/images/c-dawosi-7.jpg',
 	cAodaliya:'./assets/images/c-aodaliya-3.jpg',
 	cDawosi2:'./assets/images/c-dawosi-5.jpg',
 	cLianheguo:'./assets/images/c-lianheguo-3.jpg',
