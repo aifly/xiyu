@@ -30,7 +30,7 @@ $color: #fffb88;
 
         @include transform(scale(1.1));
 
-        position: absolute;
+        position: absolute !important;
         left: 0;
         top: 0;
         overflow: hidden;

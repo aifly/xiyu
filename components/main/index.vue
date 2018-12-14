@@ -2,7 +2,7 @@
 	<transition name='main'>
 		<div class='zmiti-main-ui lt-full' :class="{'show':show}" >
 			<transition name='detail'>
-				<div v-if='showDetail' class='zmiti-main-detail'>
+				<div v-if='showDetail && index >-1' class='zmiti-main-detail'>
 					<div class='lt-full' :style="{background:'url('+sceneList[index].imgsList[0].img+') no-repeat center center',backgroundSize:'cover'}"></div>
 					<transition name='create'>
 						<div v-if='createImg && !creating' class='zmiti-createimg'>
@@ -29,7 +29,7 @@
 						</div>
 					</div>
 					<transition name='create'>
-						<div v-if='!createImg && !creating' class='zmiti-main-detail-C'>
+						<div v-if='!createImg && !creating && index >-1' class='zmiti-main-detail-C'>
 							<div class='zmiti-main-detail-content'>
 								<div class='zmiti-detail-img' :class="{'active':isWidth}">
 									<img @load='imgLoad' :src="sceneList[index]['imgsList'+sceneIndex][0].img" alt="">
@@ -51,9 +51,9 @@
 					</transition>
 				</div>
 			</transition>
-			<div v-show='!showDetail && show'>
+			<div v-show='!showDetail && show '>
 				<div>正在进入，请稍后...</div>
-				<iframe :style="{opacity:loaded?1:0}" @load='load' :src="href||sceneList[index]['href']" frameborder="0"></iframe>
+				<iframe @load='load' @error='error' :src=" href || sceneList[index]['href']" frameborder="0"></iframe>
 
 				<div class='zmiti-scene-list' :class='{"show":showScene}'>
 					<ul>
@@ -127,6 +127,10 @@
 	
 		components: {Toast},
 		methods: {
+
+			error(){
+				document.title = 'error';
+			},
 			imgLoad(e){
 				this.isWidth = e.target.width>e.target.height;
 			},
@@ -163,12 +167,7 @@
 				else{
 					this.href = '';
 				}
-
-
 				this.lastIndex = index;
-
-				
-
 			},
 			reChangeScene(){
 				this.createImg = '';
@@ -187,7 +186,10 @@
 		mounted() {
 			var {obserable } = this;
 			obserable.on('toggleMain',(data)=>{
+				document.body.style.position = 'fixed'; //防止iframe页上下滚动时带动本页移动
+				document.body.style.position = 'static'; //取消禁止滚动
 				this.show = data.show;
+				this.index = 0;
 				setTimeout(() => {
 					this.showScene = false;
 					this.showFrame = true;

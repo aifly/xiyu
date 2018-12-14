@@ -134,15 +134,15 @@ new Vue({
 			 
 		}
 
+	
+
 		s.loading(arr, (scale) => {
 			s.width = scale *100|0;
 		}, () => {
 			
 			s.show = true;
 			s.loaded = true;
-			setTimeout(() => {
-				
-			}, 1000);
+			
 		})
 		
 

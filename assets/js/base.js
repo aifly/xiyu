@@ -21,12 +21,12 @@
 	aodaliya: './assets/images/aodaliya.jpg',
 	lima: './assets/images/lima.jpg',
 	
-	cDawosi:'./assets/images/c-dawosi-7.jpg',
-	cAodaliya:'./assets/images/c-aodaliya-3.jpg',
-	cDawosi2:'./assets/images/c-dawosi-5.jpg',
-	cLianheguo:'./assets/images/c-lianheguo-3.jpg',
-	cYuehan:'./assets/images/c-yuehan-3.jpg',
-	cLima:'./assets/images/c-lima-3.jpg',
+	cDawosi:'./assets/images/c-dawosi-8.jpg',
+	cAodaliya:'./assets/images/c-aodaliya-4.jpg',
+	cDawosi2:'./assets/images/c-dawosi-9.jpg',
+	cLianheguo:'./assets/images/c-lianheguo-4.jpg',
+	cYuehan:'./assets/images/c-yuehan-4.jpg',
+	cLima:'./assets/images/c-lima-4.jpg',
 
 
 
@@ -66,7 +66,7 @@ window.config = {
       ],
       name: "澳大利亚",
       href:
-        "http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181127120949/5bfcc37e5098914c4b7b44ea/index.html"
+        window.location.protocol+"//h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181127120949/5bfcc37e5098914c4b7b44ea/index.html"
     },
     {
       id: "2",
@@ -81,7 +81,7 @@ window.config = {
       ],
       name: "联合国",
       href:
-        "http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181127120650/5bfcc2d35098914c492ccf66/index.html"
+        window.location.protocol+"//h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181127120650/5bfcc2d35098914c492ccf66/index.html"
     },
     {
       id: "5",
@@ -96,7 +96,7 @@ window.config = {
       ],
       name: "秘鲁",
       href:
-        "http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181130104113/5c014be15098914c691a4c56/index.html"
+        window.location.protocol+"//h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181130104113/5c014be15098914c691a4c56/index.html"
     },
     {
       id: "4",
@@ -119,10 +119,10 @@ window.config = {
       ],
       name: "瑞士",
       href:
-        "http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181127121213/5bfcc40a5098914c484f021a/index.html",
+        window.location.protocol+"//h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181127121213/5bfcc40a5098914c484f021a/index.html",
       href1:
-        "http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181127121213/5bfcc40a5098914c484f021a/index.html"
-      //href1:"http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181128053817/5bfe61835098914c4f74cfee/index.html"
+        window.location.protocol+"//h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181127121213/5bfcc40a5098914c484f021a/index.html"
+      //href1:window.location.protocol+"//h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181128053817/5bfe61835098914c4f74cfee/index.html"
     },
     {
       id: "1",
@@ -137,7 +137,7 @@ window.config = {
       ],
       name: "南非",
       href:
-        "http://h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181127112803/5bfcb9805098914c593cb8f2/index.html"
+        window.location.protocol+"//h5.zhongguowangshi.com/campaigns/58e8a8ad97278378cf13844a/20181127112803/5bfcb9805098914c593cb8f2/index.html"
     }
   ]
 };
