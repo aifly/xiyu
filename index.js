@@ -103,7 +103,18 @@ new Vue({
 		},
 	
 		updatePv() {
-			
+			 $.ajax({
+				url: window.location.protocol + '//api.zmiti.com/v2/custom/update_pvnum/',
+				type: 'post',
+				data: {
+					customid: 74
+				}
+			}).done((data) => {
+				if (data.getret === 0) {
+					this.pv = data.totalpv;
+					this.randomPv = data.randtotalpv;
+				}
+			});
 		}
 	},
 	components: {
